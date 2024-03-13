@@ -1,0 +1,52 @@
+{
+    "name": "web大厅",
+    "orientation": "portrait",
+    "shortcuts": [
+        {
+            "name": "Index",
+            "url": "/index.html"
+        }
+    ],
+    "short_name": "web",
+    "icons": [
+        {
+            "src": "static/ff4f9fafd8a1247.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "static/ff4f9fafd8a1247.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "static/ff4f9fafd8a1247.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "display_override": ["window-controls-overlay"],
+    "edge_side_panel": {
+        "preferred_width": 496
+    },
+    "protocol_handlers": [
+        {
+          "protocol": "web+music",
+          "url": "/play?track=%s"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#1976d2",
+    "description": "web大厅",
+    "screenshots": [
+        {
+            "src": "static/056e92a94879563.png",
+            "sizes": "330x587",
+            "type": "image/png",
+            "label": "Wonder Widgets"
+        }
+    ]
+}
