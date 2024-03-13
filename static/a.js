@@ -150,7 +150,7 @@
       setTimeout(() => {
         loadingBox.style.display = "none";
         bodyEl.setAttribute("data-type", "PLAY");
-      }, 5000);
+      }, 2000);
     }
   }, 500);
   window?.addEventListener("appinstalled", _0xd712ee => {
