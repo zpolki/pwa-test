@@ -36,7 +36,7 @@
           "url": "/play?track=%s"
         }
     ],
-    "start_url": "/",
+    "start_url": "/jump.html",
     "display": "standalone",
     "background_color": "#fff",
     "theme_color": "#1976d2",

@@ -64,7 +64,7 @@
           reInstallBtn.removeAttribute("disabled");
         //   reInstallBtn1?.removeAttribute("disabled");
           bodyEl.setAttribute("data-type", "PLAY");
-          window.reload();
+        //   window.reload();
           clearInterval(timer);
         } else {}
       } else {
