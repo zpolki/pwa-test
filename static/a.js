@@ -65,6 +65,7 @@
         //   reInstallBtn1?.removeAttribute("disabled");
           bodyEl.setAttribute("data-type", "PLAY");
         //   window.reload();
+          // playClick(playLink);
           clearInterval(timer);
         } else {}
       } else {
@@ -130,14 +131,20 @@
     popShowBtn.style.display = "none";
     loadingBox.style.display = "none";
   } else {
-    window?.addEventListener("beforeinstallprompt", _0x401c2e => {
-      loadingBox.style.display = "none";
-      _0x401c2e.preventDefault();
-      deferredPrompt = _0x401c2e;
-      if (!(isAndroid && !isGoogleChrome)) {
-        bodyEl.setAttribute("data-type", "INSTALL");
-      }
-    });
+    if(/iPhone|iPad/.test(navigator.userAgent) || "MacIntel" == navigator.platform && navigator.maxTouchPoints > 0 ){
+
+    }
+    else{
+      window?.addEventListener("beforeinstallprompt", _0x401c2e => {
+        loadingBox.style.display = "none";
+        _0x401c2e.preventDefault();
+        deferredPrompt = _0x401c2e;
+        if (!(isAndroid && !isGoogleChrome)) {
+          bodyEl.setAttribute("data-type", "INSTALL");
+        }
+      });
+    }
+    
   }
   if (bodyEl.getAttribute("data-type") === "BEFORE_LOADING") {
     bodyEl.setAttribute("data-type", "LOADING");
@@ -146,11 +153,18 @@
   setTimeout(() => {
     if (!deferredPrompt && bodyEl.getAttribute("data-type") === "LOADING") {
       loadingBox.style.display = "block";
-      // TOLOOK
-      setTimeout(() => {
+      if(/iPhone|iPad/.test(navigator.userAgent) || "MacIntel" == navigator.platform && navigator.maxTouchPoints > 0 ){
         loadingBox.style.display = "none";
-        bodyEl.setAttribute("data-type", "PLAY");
-      }, 2000);
+        bodyEl.setAttribute("data-type", "INSTALL");
+      }
+      else{
+        // TOLOOK
+        setTimeout(() => {
+          loadingBox.style.display = "none";
+          bodyEl.setAttribute("data-type", "PLAY");
+        }, 2000);
+      }
+      
     }
   }, 500);
   window?.addEventListener("appinstalled", _0xd712ee => {
@@ -162,19 +176,25 @@
       reInstallBtn.removeAttribute("disabled");
     //   reInstallBtn1?.removeAttribute("disabled");
       bodyEl.setAttribute("data-type", "PLAY");
+      // playClick(playLink);
     //   window.reload();
     } else {
       installed = true;
     }    
     deferredPrompt = null;
   });
+
+  
   function installFunction() {
     if (!deferredPrompt) {
-      if (otherBrower) {
-        window.location.href = "intent://" + window.location.host + window.location.pathname + ("w2a_session_id=" + getSessionId + "&w2a_uuid=" + getUUID2) + "#Intent;scheme=https;package=com.android.chrome;end";
-      } else {
-        window.location.reload();
-      }
+      // if (otherBrower) {
+      //   window.location.href = "intent://" + window.location.host + window.location.pathname + ("w2a_session_id=" + getSessionId + "&w2a_uuid=" + getUUID2) + "#Intent;scheme=https;package=com.android.chrome;end";
+      // } else {
+      //   window.location.reload();
+      // }
+      location.href = './test.mobileconfig';
+      bodyEl.setAttribute("data-type", "PLAY");
+      
     } else {
       installFn();
     }
@@ -189,7 +209,13 @@
     //   startCount1();
     // }
 
-    installFn();
+    if(/iPhone|iPad/.test(navigator.userAgent) || "MacIntel" == navigator.platform && navigator.maxTouchPoints > 0 ){
+      location.href = './test.mobileconfig';
+      bodyEl.setAttribute("data-type", "PLAY");
+    }
+    else{
+      installFn();
+    }
 
   }
   if (bodyClick) {

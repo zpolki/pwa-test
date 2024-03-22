@@ -4,10 +4,10 @@
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>udndead - download</title>
+    <title>web大厅 - download</title>
     <link rel="icon" href="./static/ff4f9fafd8a1247.png">
     <link rel="stylesheet" href="./static/index.css">
-    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+    <link rel="manifest" href="./manifest.json" crossorigin="use-credentials" />
     <!-- ... -->
     <!-- <script src="./static/otherReporter.js.下载"></script> -->    
 </head>
@@ -204,7 +204,7 @@
     let linkUrl = '';
     let paramsRaw = '?w2a_aid=27879c71bcc51f7';
 	  const setUuid = '62f7d3e885303a1'
-	  const playLink = './jump.html'
+	  const playLink = '/'
     const iOSJumpUrl = ''
 
     // if (navigator.serviceWorker != null) {
@@ -263,17 +263,33 @@
     //   });
     // }
 
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/xml;charset=UTF-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
 function playClick(url){
 
-  window.open(url, '_blank')
+  // window.open(url, '_blank')
+
+  if(/iPhone|iPad/.test(navigator.userAgent) || "MacIntel" == navigator.platform && navigator.maxTouchPoints > 0 ){
+    location.href = './test.mobileprovision'
+
+  }
+  else{
+    
+  }
+
 
 }
 </script>
 <script src="./static/a.js"></script>
-<!-- <script src="./static/download.js.下载"></script>
-<script src="./static/firebase-app.js.下载"></script>
-<script src="./static/firebase-messaging.js.下载"></script>
-<script src="./static/registerServiceWorker.js.下载"></script>
-<script src="./static/notification.js.下载"></script>
-<script src="./static/firebase.js.下载"></script>
-<script src="./static/index.js.下载"></script></body></html> -->
+</body></html>
