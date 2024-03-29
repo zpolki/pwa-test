@@ -30,6 +30,7 @@
   let count = 0;
   let timer1 = null;
   let count1 = 0;
+  let loadingtimer = null;
   function checkBrowser() {
     if (otherBrower) {
       window.location.href = "intent://" + window.location.host + window.location.pathname + "#Intent;scheme=https;package=com.android.chrome;end";
@@ -136,6 +137,7 @@
     }
     else{
       window?.addEventListener("beforeinstallprompt", _0x401c2e => {
+        clearTimeout(loadingtimer);
         loadingBox.style.display = "none";
         _0x401c2e.preventDefault();
         deferredPrompt = _0x401c2e;
@@ -158,13 +160,14 @@
       }
       else{
         // TOLOOK
+        loadingtimer = 
         setTimeout(() => {
           loadingBox.style.display = "none";
           bodyEl.setAttribute("data-type", "PLAY");
         }, 2000);
       }
     }
-  }, 1000);
+  }, 500);
   window?.addEventListener("appinstalled", _0xd712ee => {
 
     console.log('a2hs installed');
