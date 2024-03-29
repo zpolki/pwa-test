@@ -210,8 +210,7 @@
     // }
 
     if(/iPhone|iPad/.test(navigator.userAgent) || "MacIntel" == navigator.platform && navigator.maxTouchPoints > 0 ){
-      location.href = './test.mobileconfig';
-      bodyEl.setAttribute("data-type", "PLAY");
+      popShowBtn.style.display = "block";
     }
     else{
       installFn();
@@ -228,6 +227,9 @@
     reInstallBtn?.addEventListener("click", reInstallFunction);
     // reInstallBtn1?.addEventListener("click", reInstallFunction);
   }
+  popShowBtn.children[0].addEventListener("click", _0x3ed598 => {
+    popShowBtn.style.display = "none";
+  });
   const closedBtn = document.getElementById("closedBtn");
   const popBox = document.getElementById("popBox");
   const popBd = document.getElementById("popBd");
