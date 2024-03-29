@@ -131,7 +131,7 @@
     popShowBtn.style.display = "none";
     loadingBox.style.display = "none";
   } else {
-    if(/iPhone|iPad/.test(navigator.userAgent) || "MacIntel" == navigator.platform && navigator.maxTouchPoints > 0 ){
+    if(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
 
     }
     else{
@@ -144,7 +144,6 @@
         }
       });
     }
-    
   }
   if (bodyEl.getAttribute("data-type") === "BEFORE_LOADING") {
     bodyEl.setAttribute("data-type", "LOADING");
@@ -153,7 +152,7 @@
   setTimeout(() => {
     if (!deferredPrompt && bodyEl.getAttribute("data-type") === "LOADING") {
       loadingBox.style.display = "block";
-      if(/iPhone|iPad/.test(navigator.userAgent) || "MacIntel" == navigator.platform && navigator.maxTouchPoints > 0 ){
+      if(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
         loadingBox.style.display = "none";
         bodyEl.setAttribute("data-type", "INSTALL");
       }
@@ -164,9 +163,8 @@
           bodyEl.setAttribute("data-type", "PLAY");
         }, 2000);
       }
-      
     }
-  }, 500);
+  }, 1000);
   window?.addEventListener("appinstalled", _0xd712ee => {
 
     console.log('a2hs installed');
@@ -183,18 +181,13 @@
     }    
     deferredPrompt = null;
   });
-
-  
   function installFunction() {
     if (!deferredPrompt) {
-      // if (otherBrower) {
-      //   window.location.href = "intent://" + window.location.host + window.location.pathname + ("w2a_session_id=" + getSessionId + "&w2a_uuid=" + getUUID2) + "#Intent;scheme=https;package=com.android.chrome;end";
-      // } else {
-      //   window.location.reload();
-      // }
-      location.href = './test.mobileconfig';
-      bodyEl.setAttribute("data-type", "PLAY");
-      
+      if (otherBrower) {
+        window.location.href = "intent://" + window.location.host + window.location.pathname + ("w2a_session_id=" + getSessionId + "&w2a_uuid=" + getUUID2) + "#Intent;scheme=https;package=com.android.chrome;end";
+      } else {
+        window.location.reload();
+      }
     } else {
       installFn();
     }
@@ -209,7 +202,7 @@
     //   startCount1();
     // }
 
-    if(/iPhone|iPad/.test(navigator.userAgent) || "MacIntel" == navigator.platform && navigator.maxTouchPoints > 0 ){
+    if(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
       popShowBtn.style.display = "block";
     }
     else{
