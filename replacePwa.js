@@ -5,11 +5,11 @@ let url = window.URL.createObjectURL( new Blob( [JSON.stringify({
     "orientation": "portrait",
     "shortcuts": [
         {
-            "name": "Tiger555",
+            "name": "Tiger444",
             "url": startUrl
         }
     ],
-    "short_name": "Tiger555",
+    "short_name": "Tiger444",
     "icons": [
         {
             "src": new URL("./landing/static/logo.webp", location.href).href ,
