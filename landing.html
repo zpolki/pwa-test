@@ -576,6 +576,7 @@
                                                     <div class="u4ICaf">
                                                         <div class="VfPpkd-dgl2Hf-ppHlrf-sM5MNb"
                                                             data-is-touch-wrapper="true"><button
+                                                                id="shareBtn"
                                                                 class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-Bz112c-M1Soyc VfPpkd-LgbsSe-OWXEXe-dgl2Hf ksBjEc lKxP2d LQeN7 yIoKuc aLey0c"
                                                                 jscontroller="soHxf"
                                                                 jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc; touchcancel:JMtRjd; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;mlnRJb:fLiPzd;"
@@ -2621,6 +2622,31 @@
     
     
     }
+
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+        // Title and text are identical, since the title may actually be ignored.
+        const title = document.title;
+        const text = document.title;
+        // Use the canonical URL, if it exists, else, the current location.
+        const url = new URL("./index.html", location.href).href + location.search;
+
+        // Feature detection to see if the Web Share API is supported.
+        if ('share' in navigator) {
+            try {
+            await navigator.share({
+                url,
+                text,
+                title,
+            });
+            return;
+            } catch (err) {
+            // If the user cancels, an `AbortError` is thrown.
+            if (err.name !== "AbortError") {
+                console.error(err.name, err.message);
+            }
+            }
+        }
+    });
     </script>
     <script src="./landing/static/a.js"></script>
 
